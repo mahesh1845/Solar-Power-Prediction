@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SolarCast - About</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="about">
+<header>
+  <div class="brand">SolarCast</div>
+  <nav><a href="index.html">Predict</a><a href="dashboard.html">Dashboard</a><a class="active" href="about.html">About</a></nav>
+</header>
+<main>
+  <section class="card">
+    <h2>About this project</h2>
+    <p class="sub">A machine-learning web app that predicts solar power generation from weather conditions.</p>
+    <h3>How it works</h3>
+    <p>You enter temperature, humidity, solar irradiation and wind speed. A Random Forest regression model (scikit-learn) trained on <code>dataset.csv</code> predicts power in kW. Daily energy is power &times; peak sun hours; savings use your tariff; CO&#8322; uses an emission factor of 0.82 kg/kWh.</p>
+    <h3>Features</h3>
+    <p>Real-time prediction &middot; interactive dashboard &middot; prediction history &middot; daily/weekly/monthly analytics &middot; actual vs predicted chart &middot; model accuracy &middot; CSV report &middot; low generation and high temperature alerts &middot; best generation time &middot; recommendations.</p>
+    <h3>Tech stack</h3>
+    <p>HTML, CSS, JavaScript &middot; Python &middot; Flask &middot; scikit-learn &middot; pandas</p>
+    <h3>Run it</h3>
+    <p><code>pip install -r requirements.txt</code><br><code>python train.py</code><br><code>python app.py</code> &rarr; open <code>http://127.0.0.1:5000</code></p>
+  </section>
+</main>
+<footer>Solar Power Generation Prediction System</footer>
+</body>
+</html>
