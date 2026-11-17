@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SolarCast - Solar Power Prediction</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+<header>
+  <div class="brand">SolarCast</div>
+  <nav><a class="active" href="index.html">Predict</a><a href="dashboard.html">Dashboard</a><a href="about.html">About</a></nav>
+</header>
+<main>
+  <div class="grid two">
+    <section class="card">
+      <h2>Predict solar output</h2>
+      <p class="sub">Enter the weather at your site to see expected power and daily energy.</p>
+      <form id="predict-form" novalidate>
+        <div class="fields">
+          <div><label for="temperature">Temperature (&deg;C)</label><input id="temperature" type="number" step="any" value="32"></div>
+          <div><label for="humidity">Humidity (%)</label><input id="humidity" type="number" step="any" value="45"></div>
+          <div><label for="irradiation">Solar irradiation (W/m&sup2;)</label><input id="irradiation" type="number" step="any" value="700"></div>
+          <div><label for="wind_speed">Wind speed (m/s)</label><input id="wind_speed" type="number" step="any" value="3"></div>
+        </div>
+        <fieldset><legend>Estimate settings</legend>
+          <div class="fields">
+            <div><label for="peak_sun_hours">Peak sun hours per day</label><input id="peak_sun_hours" type="number" step="any" value="6"></div>
+            <div><label for="tariff">Tariff per kWh (&#8377;)</label><input id="tariff" type="number" step="any" value="8"></div>
+          </div>
+        </fieldset>
+        <button type="submit">Predict power</button>
+        <div id="error" class="msg"></div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Result</h2>
+      <div class="gauge">
+        <svg viewBox="0 0 240 120">
+          <path d="M20 120 A100 100 0 0 1 220 120" fill="none" stroke="#e1ebf2" stroke-width="22" stroke-linecap="round"/>
+          <path id="gauge-fill" d="M20 120 A100 100 0 0 1 220 120" fill="none" stroke="#f59e0b" stroke-width="22" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314"/>
+        </svg>
+      </div>
+      <div class="big"><span id="power">--</span> <small>kW</small></div>
+      <p class="center" id="hint">Run a prediction to see results</p>
+      <div class="chips">
+        <div class="chip"><b id="daily">--</b>Daily energy (kWh)</div>
+        <div class="chip"><b id="eff">--</b>Panel efficiency (%)</div>
+        <div class="chip"><b id="savings">--</b>Bill savings (&#8377;/day)</div>
+        <div class="chip"><b id="co2">--</b>CO&#8322; avoided (kg/day)</div>
+      </div>
+      <div id="alerts"></div>
+      <div class="tip" id="best" hidden></div>
+      <div class="tip" id="reco" hidden></div>
+    </section>
+  </div>
+</main>
+<footer>Solar Power Generation Prediction System &middot; Flask + scikit-learn</footer>
+<script src="script.js"></script>
+</body>
+</html>
