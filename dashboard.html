@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SolarCast - Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="dashboard">
+<header>
+  <div class="brand">SolarCast</div>
+  <nav><a href="index.html">Predict</a><a class="active" href="dashboard.html">Dashboard</a><a href="about.html">About</a></nav>
+</header>
+<main>
+  <div class="toolbar">
+    <a class="btn sec" href="/api/report.csv">Download CSV report</a>
+    <button class="btn sec red" id="clear" style="width:auto">Clear history</button>
+  </div>
+
+  <div class="grid four">
+    <div class="card stat"><div class="v" id="s-power">--</div><div class="l">Avg predicted power (kW)</div></div>
+    <div class="card stat"><div class="v" id="s-kwh">--</div><div class="l">Total energy (kWh)</div></div>
+    <div class="card stat"><div class="v" id="s-eff">--</div><div class="l">Avg panel efficiency (%)</div></div>
+    <div class="card stat"><div class="v" id="s-acc">--</div><div class="l">Model accuracy (R&sup2;)</div></div>
+    <div class="card stat"><div class="v" id="s-temp">--</div><div class="l">Avg temperature (&deg;C)</div></div>
+    <div class="card stat"><div class="v" id="s-irr">--</div><div class="l">Avg irradiation (W/m&sup2;)</div></div>
+    <div class="card stat"><div class="v" id="s-sav">--</div><div class="l">Bill savings (&#8377;)</div></div>
+    <div class="card stat"><div class="v" id="s-co2">--</div><div class="l">CO&#8322; avoided (kg)</div></div>
+  </div>
+
+  <div class="grid two" style="margin-top:22px">
+    <section class="card"><h3>Power generation (recent predictions)</h3><canvas id="c-power"></canvas></section>
+    <section class="card">
+      <h3>Energy analytics</h3>
+      <div class="tabs" id="tabs">
+        <button data-k="daily" class="on">Daily</button><button data-k="weekly">Weekly</button><button data-k="monthly">Monthly</button>
+      </div>
+      <canvas id="c-energy"></canvas>
+    </section>
+    <section class="card"><h3>Actual vs predicted power (test set)</h3><canvas id="c-compare"></canvas></section>
+    <section class="card"><h3>Weather data (recent predictions)</h3><canvas id="c-weather"></canvas></section>
+  </div>
+
+  <section class="card" style="margin-top:22px">
+    <h3>Prediction history</h3>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Time</th><th>Temp &deg;C</th><th>Hum %</th><th>Irr W/m&sup2;</th><th>Wind m/s</th><th>kW</th><th>kWh/day</th><th>Eff %</th><th>Savings &#8377;</th><th>CO&#8322; kg</th></tr></thead>
+        <tbody id="history"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+<footer>Solar Power Generation Prediction System</footer>
+<script src="script.js"></script>
+</body>
+</html>
